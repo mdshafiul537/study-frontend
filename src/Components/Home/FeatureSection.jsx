@@ -16,7 +16,7 @@ const FeatureSection = ({ ...props }) => {
           <span className="px-8 border-b border-gray-400">Our Feature</span>
         </h2>
       </div>
-      <div className="grid grid-cols-12 gap-5">
+      <div className="grid grid-cols-12 gap-6">
         <div className="col-span-2 flex flex-col p-4 border ">
           <div className="w-full h-52 ">
             <Lottie animationData={createFile} className="h-full" />

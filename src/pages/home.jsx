@@ -8,6 +8,7 @@ import { Tooltip } from "react-tooltip";
 import HomeBanner from "../Components/Home/HomeBanner";
 import FeatureSection from "../Components/Home/FeatureSection";
 import HomeFAQ from "../Components/Home/HomeFAQ";
+import Quotes from "../Components/Home/Quotes";
 const HomePage = () => {
   useEffect(() => {}, []);
 
@@ -22,6 +23,15 @@ const HomePage = () => {
 
       <section className="container mx-auto">
         <FeatureSection />
+      </section>
+
+      <section className="container mx-auto my-8">
+        <div className="grid grid-cols-1 gap-8">
+          <div className="">
+            <h3 className="text-2xl font-bold text-center">Students Quote's</h3>
+          </div>
+          <Quotes />
+        </div>
       </section>
 
       <section className="container mx-auto">
