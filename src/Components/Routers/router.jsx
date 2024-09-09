@@ -7,6 +7,9 @@ import ContactPage from "../../pages/contactPage";
 import AssignmentsPage from "../../pages/assignmentsPage";
 import LoginPage from "../../pages/loginPage";
 import RegisterPage from "../../pages/registerPage";
+import PendingAssignmentsPage from "../../pages/pending-assignments";
+import UpdateAssignmentsPage from "../../pages/update-assignments";
+import AssignmentPage from "../../pages/assignmentPage";
 
 const router = createBrowserRouter([
   {
@@ -35,10 +38,18 @@ const router = createBrowserRouter([
         element: <CreateAssignmentsPage />,
       },
       {
-        path: "/pending-assignments",
-        element: <CreateAssignmentsPage />,
+        path: "/update-assignments",
+        element: <UpdateAssignmentsPage />,
       },
-
+      {
+        path: "/pending-assignments",
+        element: <PendingAssignmentsPage />,
+      },
+      {
+        path: "/assignments/:id",
+        element: <AssignmentPage />,
+        
+      },
       {
         path: "/contact-us",
         element: <ContactPage />,

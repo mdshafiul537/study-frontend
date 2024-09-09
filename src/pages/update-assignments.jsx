@@ -13,9 +13,9 @@ import {
 } from "../utils/helper";
 import AssignmentForm from "../Components/Assignment/AssignmentForm";
 
-const CreateAssignmentsPage = ({ ...props }) => {
-  const onCreateAssignmentAction = (values, reset) => {
-    onNotify("Sending item add request. Please wait");
+const UpdateAssignmentsPage = ({ ...props }) => {
+  const onAssignmentUpdateAction = (values, reset) => {
+    onNotify("Sending Update request. Please wait");
     axios
       .post(`${import.meta.env.VITE_API_URL}/products`, values)
       .then((resp) => {
@@ -47,17 +47,17 @@ const CreateAssignmentsPage = ({ ...props }) => {
     marks: null,
     thumbnail: null,
     difficulty: null,
-    dueDate: new Date(),
+    dueDate: null,
     isPremium: false,
   };
   return (
     <React.Fragment>
       <AssignmentForm
+        onSubmitAction={onAssignmentUpdateAction}
         initValues={initValues}
-        onSubmitAction={onCreateAssignmentAction}
       />
     </React.Fragment>
   );
 };
 
-export default CreateAssignmentsPage;
+export default UpdateAssignmentsPage;
