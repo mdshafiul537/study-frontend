@@ -1,7 +1,9 @@
 import React from "react";
 import Header from "../Components/Layout/Header";
 import Footer from "../Components/Layout/Footer";
+import Lottie from "lottie-react";
 import { Helmet } from "react-helmet";
+import notFoundFile from "../../public/assets/lottie/not-founs-404";
 
 const Error404Page = () => {
   return (
@@ -14,11 +16,9 @@ const Error404Page = () => {
         <div className="w-full min-h-screen flex justify-center items-center">
           <div className="card-body text-center w-full h-3/4">
             <h1 className="text-center text-3xl font-bold">Opps!</h1>
-            <h2>
-              <div className="badge badge-error text-2xl pt-4 pb-4">
-                404 Not found
-              </div>
-            </h2>
+            <div className="w-full ">
+              <Lottie animationData={notFoundFile} className="h-72" />
+            </div>
             <p>Page not found, Please try another Or Contact administrator</p>
             <div className="pt-4 pb-4 mt-4 mb-4">
               <a
