@@ -17,7 +17,7 @@ const CreateAssignmentsPage = ({ ...props }) => {
   const onCreateAssignmentAction = (values, reset) => {
     onNotify("Sending item add request. Please wait");
     axios
-      .post(`${import.meta.env.VITE_API_URL}/products`, values)
+      .post(`${import.meta.env.VITE_API_URL}/assignments`, values)
       .then((resp) => {
         if (!isEmptyOrNull(resp.data)) {
           if (resp.data.status) {
@@ -32,7 +32,7 @@ const CreateAssignmentsPage = ({ ...props }) => {
               isPremium: false,
             });
           } else {
-            onNotifyError("Item add failed");
+            onNotifyError(resp.data.message);
           }
         }
       })

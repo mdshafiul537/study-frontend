@@ -10,6 +10,8 @@ import RegisterPage from "../../pages/registerPage";
 import PendingAssignmentsPage from "../../pages/pending-assignments";
 import UpdateAssignmentsPage from "../../pages/update-assignments";
 import AssignmentPage from "../../pages/assignmentPage";
+import { getAssignmentById, getAssignments } from "../../utils/loaderAction";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/assignments",
         element: <AssignmentsPage />,
+        loader: getAssignments,
       },
       {
         path: "/create-assignments",
@@ -48,7 +51,9 @@ const router = createBrowserRouter([
       {
         path: "/assignments/:id",
         element: <AssignmentPage />,
-        
+        loader: ({ params }) => {
+          return getAssignmentById(params?.id);
+        },
       },
       {
         path: "/contact-us",
