@@ -54,12 +54,26 @@ const AssignmentCard = ({ assignment, ...props }) => {
           </div>
         </div>
       </div>
-      <div className="">
+      <div className="flex flex-row gap-6">
         <NavLink
           to={`/assignments/${_id}`}
           className="px-5 py-1 bg-emerald-700 text-white font-bold"
         >
           Details
+        </NavLink>
+
+        <NavLink
+          to={`/update-assignments/${_id}`}
+          className="px-5 py-1 bg-amber-600 text-white font-bold"
+        >
+          Update
+        </NavLink>
+
+        <NavLink
+          to={`/assignments/${_id}`}
+          className="px-5 py-1 bg-red-600 text-white font-bold"
+        >
+          Delete
         </NavLink>
       </div>
     </div>

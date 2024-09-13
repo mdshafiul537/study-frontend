@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import { yupResolver } from "@hookform/resolvers/yup";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
@@ -12,8 +12,11 @@ import {
   onNotifySuccess,
 } from "../utils/helper";
 import AssignmentForm from "../Components/Assignment/AssignmentForm";
+import { AuthContext } from "../Context/AuthProvider";
 
 const CreateAssignmentsPage = ({ ...props }) => {
+  const { user } = useContext(AuthContext);
+
   const onCreateAssignmentAction = (values, reset) => {
     onNotify("Sending item add request. Please wait");
     axios
@@ -49,12 +52,15 @@ const CreateAssignmentsPage = ({ ...props }) => {
     difficulty: null,
     dueDate: new Date(),
     isPremium: false,
+    userEmail: user.email,
+    userName: user.displayName,
   };
   return (
     <React.Fragment>
       <AssignmentForm
         initValues={initValues}
         onSubmitAction={onCreateAssignmentAction}
+        name="Create"
       />
     </React.Fragment>
   );

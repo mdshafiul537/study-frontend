@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AssignmentCard from "../Components/Assignment/AssignmentCard";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Components/Utils/Loading";
 import {
@@ -14,7 +14,6 @@ import EsModal from "../Components/Utils/EsModal";
 import SubmissionForm from "../Components/Submission/SubmissionForm";
 
 const AssignmentPage = ({ ...props }) => {
-  const params = useParams();
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [assignment, setAssignment] = useState({});

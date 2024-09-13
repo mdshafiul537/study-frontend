@@ -22,6 +22,7 @@ import SubmissionsPage from "../../pages/submissionsPage";
 import MySubmissionsPage from "../../pages/mySubmissionsPage";
 import { LoginPage } from "../../pages/login";
 import { RegisterPage } from "../../pages/register";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -48,11 +49,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/create-assignments",
-        element: <CreateAssignmentsPage />,
+        element: (
+          <PrivateRoute>
+            <CreateAssignmentsPage />
+          </PrivateRoute>
+        ),
       },
       {
-        path: "/update-assignments",
-        element: <UpdateAssignmentsPage />,
+        path: "/update-assignments/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateAssignmentsPage />
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) => {
+          return getAssignmentById(params?.id);
+        },
       },
       {
         path: "/pending-assignments",
@@ -63,25 +75,41 @@ const router = createBrowserRouter([
       },
       {
         path: "/submissions",
-        element: <SubmissionsPage />,
+        element: (
+          <PrivateRoute>
+            <SubmissionsPage />
+          </PrivateRoute>
+        ),
         loader: async () => {
           return getAllSubmissionStatus("Complete");
         },
       },
       {
         path: "/users/submissions",
-        element: <MySubmissionsPage />,
+        element: (
+          <PrivateRoute>
+            <MySubmissionsPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/submissions/:id",
-        element: <PendingSubmissionPage />,
+        element: (
+          <PrivateRoute>
+            <PendingSubmissionPage />
+          </PrivateRoute>
+        ),
         loader: async ({ params }) => {
           return getSubmissionById(params.id);
         },
       },
       {
         path: "/assignments/:id",
-        element: <AssignmentPage />,
+        element: (
+          <PrivateRoute>
+            <AssignmentPage />
+          </PrivateRoute>
+        ),
         loader: ({ params }) => {
           return getAssignmentById(params?.id);
         },

@@ -22,6 +22,7 @@ const AssignmentForm = ({
   initValues,
   difficulties = ["easy", "medium", "hard"],
   onSubmitAction,
+  name = "Create",
 }) => {
   const schema = yup
     .object({
@@ -56,7 +57,7 @@ const AssignmentForm = ({
       <div className="container mx-auto">
         <div className="w-full flex flex-col items-center justify-center">
           <div className="w-2/3 sm:w-full xs:w-full md:w-full lg:w-2/3 flex flex-col my-7">
-            <h2 className="text-2xl font-bold my-6">Create Assignment </h2>
+            <h2 className="text-2xl font-bold my-6">{name} Assignment </h2>
 
             <form
               onSubmit={handleSubmit(onSubmit)}
