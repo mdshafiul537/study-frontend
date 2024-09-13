@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
 import Submissions from "../Components/Submission/Submissions";
-import { isEmptyOrNull } from "../utils/helper";
+import { isEmptyOrNull, onNotifySuccess } from "../utils/helper";
 import Loading from "../Components/Utils/Loading";
 import { useLoaderData } from "react-router-dom";
+import { getAllSubmissionByUser } from "../utils/loaderAction";
 
-const PendingAssignmentsPage = () => {
-  const submissionResp = useLoaderData();
-
+const MySubmissionsPage = () => {
   const [submissions, setSubmissions] = useState([]);
   const [isDataLoading, setIsDataLoading] = useState(true);
 
   useEffect(() => {
-    if (!isEmptyOrNull(submissionResp)) {
-      if (submissionResp.status) {
-        setSubmissions(submissionResp.response);
-        setIsDataLoading(false);
-      }
-    }
-  }, [submissionResp]);
+    getAllSubmissionByUser("md.shafiul.islam@gmail.com")
+      .then((resp) => {
+        if (!isEmptyOrNull(resp)) {
+          if (resp.status) {
+            onNotifySuccess(resp.message);
+            setSubmissions(resp.response);
+            setIsDataLoading(false);
+          }
+        }
+      })
+      .catch((error) => {
+        console.log("User Error ", error);
+      });
+  }, []);
 
   if (isDataLoading) {
     return <Loading isLoading={isDataLoading} />;
@@ -32,4 +38,4 @@ const PendingAssignmentsPage = () => {
   );
 };
 
-export default PendingAssignmentsPage;
+export default MySubmissionsPage;

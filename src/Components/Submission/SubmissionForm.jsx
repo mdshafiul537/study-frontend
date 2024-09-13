@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { NavLink } from "react-router-dom";
 
 const SubmissionForm = ({
   onSubmit,
@@ -11,6 +12,8 @@ const SubmissionForm = ({
   isUpdate = false,
   ...props
 }) => {
+  const [copy, setCopy] = useState({ value: "", copied: false });
+
   const schema = yup
     .object({
       title: yup.string().required("Title is required"),
@@ -29,6 +32,8 @@ const SubmissionForm = ({
     formState: { errors },
     reset,
   } = useForm({ resolver: yupResolver(schema), defaultValues: initialValues });
+
+  console.log("initialValues ", initialValues);
 
   const onSubmitAction = (values) => {
     console.log("onSubmit, ", values);
@@ -69,27 +74,50 @@ const SubmissionForm = ({
                   {errors.itemName?.message}
                 </p>
               </div>
-              <div className="flex flex-row gap-3">
-                <label className="font-bold block w-2/6">Resources URL:</label>
-                <input
-                  type="text"
-                  placeholder="Thumbnail URL"
-                  className={`input input-bordered input-sm input-success w-full`}
-                  readOnly={isUpdate}
-                  {...register("resourcesURL")}
-                />
-                <p className="text-base text-red-600 font-semibold">
-                  {errors.image?.message}
-                </p>
-              </div>
+
+              {isUpdate ? (
+                <div className="flex flex-row gap-3 items-center">
+                  <label className="font-bold block w-1/4">
+                    Resources URL:
+                  </label>{" "}
+                  <span className="bg-gray-300 px-2 py-1 shadow-xl ">
+                    {getValues("resourcesURL")}
+                  </span>
+                  <NavLink
+                    target="_blank"
+                    className=" text-white"
+                    to={getValues("resourcesURL")}
+                  >
+                    <span className="bg-sky-700 px-2 py-1 shadow-xl">
+                      <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                    </span>
+                  </NavLink>{" "}
+                </div>
+              ) : (
+                <div className="flex flex-row gap-3">
+                  <label className="font-bold block w-2/6">
+                    Resources URL:
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Resources URL"
+                    className={`input input-bordered input-sm input-success w-full`}
+                    readOnly={isUpdate}
+                    {...register("resourcesURL")}
+                  />
+                  <p className="text-base text-red-600 font-semibold">
+                    {errors.image?.message}
+                  </p>
+                </div>
+              )}
+
               {isUpdate ? (
                 <div className="flex flex-row gap-3">
                   <label className="font-bold block w-2/6">Feedback:</label>
                   <textarea
                     type="text"
-                    placeholder="description"
-                    name="description"
-                    {...register("description")}
+                    placeholder="Feedback"
+                    {...register("feedback")}
                     className={`input input-bordered input-sm input-success w-full h-40 `}
                   ></textarea>
                 </div>
@@ -104,7 +132,7 @@ const SubmissionForm = ({
 
                   <input
                     type="number"
-                    name="userName"
+                    name="obtainedMarks"
                     {...register("obtainedMarks")}
                     placeholder="Obtained Marks:"
                     className={`input input-bordered input-sm input-success w-full`}

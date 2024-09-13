@@ -4,7 +4,7 @@ import { isEmptyOrNull } from "../utils/helper";
 import Loading from "../Components/Utils/Loading";
 import { useLoaderData } from "react-router-dom";
 
-const PendingAssignmentsPage = () => {
+const SubmissionsPage = () => {
   const submissionResp = useLoaderData();
 
   const [submissions, setSubmissions] = useState([]);
@@ -32,4 +32,4 @@ const PendingAssignmentsPage = () => {
   );
 };
 
-export default PendingAssignmentsPage;
+export default SubmissionsPage;

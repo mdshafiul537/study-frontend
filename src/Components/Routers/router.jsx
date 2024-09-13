@@ -10,8 +10,18 @@ import RegisterPage from "../../pages/registerPage";
 import PendingAssignmentsPage from "../../pages/pending-assignments";
 import UpdateAssignmentsPage from "../../pages/update-assignments";
 import AssignmentPage from "../../pages/assignmentPage";
-import { getAssignmentById, getAssignments } from "../../utils/loaderAction";
+import {
+  getAllSubmission,
+  getAllSubmissionByUser,
+  getAllSubmissionStatus,
+  getAssignmentById,
+  getAssignments,
+  getSubmissionById,
+} from "../../utils/loaderAction";
 import axios from "axios";
+import PendingSubmissionPage from "../../pages/pending-submissionPage";
+import SubmissionsPage from "../../pages/submissionsPage";
+import MySubmissionsPage from "../../pages/mySubmissionsPage";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +57,27 @@ const router = createBrowserRouter([
       {
         path: "/pending-assignments",
         element: <PendingAssignmentsPage />,
+        loader: async () => {
+          return getAllSubmissionStatus("Pending");
+        },
+      },
+      {
+        path: "/submissions",
+        element: <SubmissionsPage />,
+        loader: async () => {
+          return getAllSubmissionStatus("Complete");
+        },
+      },
+      {
+        path: "/users/submissions",
+        element: <MySubmissionsPage />,
+      },
+      {
+        path: "/submissions/:id",
+        element: <PendingSubmissionPage />,
+        loader: async ({ params }) => {
+          return getSubmissionById(params.id);
+        },
       },
       {
         path: "/assignments/:id",

@@ -33,7 +33,8 @@ const AssignmentCard = ({ assignment, ...props }) => {
                 {marks}
               </div>
               <div className="flex flex-row gap-1 items-center">
-                Difficulty Level:<i className="text-red-500 fa-solid fa-layer-group"></i>
+                Difficulty Level:
+                <i className="text-red-500 fa-solid fa-layer-group"></i>
                 {difficulty}
               </div>
               <div className="flex flex-row gap-1 items-center">

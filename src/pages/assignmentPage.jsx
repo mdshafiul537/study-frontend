@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AssignmentCard from "../Components/Assignment/AssignmentCard";
-import { useActionData, useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Components/Utils/Loading";
 import {
@@ -18,9 +18,10 @@ const AssignmentPage = ({ ...props }) => {
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [assignment, setAssignment] = useState({});
+
   const assignmentResp = useLoaderData();
+
   useEffect(() => {
-    console.log("assignmentResp ", assignmentResp);
     if (!isEmptyOrNull(assignmentResp)) {
       if (assignmentResp.status) {
         setIsDataLoading(false);

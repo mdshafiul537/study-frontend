@@ -10,8 +10,6 @@ const AssignmentsPage = () => {
 
   useEffect(() => {
     if (!isEmptyOrNull(assignmentResp)) {
-      console.log("assignmentResp ", assignmentResp);
-
       if (!isEmptyOrNull(assignmentResp.status)) {
         setAssignments(assignmentResp.response);
       }
