@@ -67,3 +67,5 @@ export const getSubmissionById = async (id) => {
     console.log("get Submission By ID Error, ", error);
   }
 };
+
+export const addUserUsingAPI = async (user) => {};

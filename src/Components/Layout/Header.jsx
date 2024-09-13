@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import NavBar from "./NavBar";
+import { RightNav } from "./RightNav";
 
 const Header = () => {
   return (
@@ -50,7 +51,7 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end space-x-3">
-            {/*TODO: User Login Nav */}
+            <RightNav />
           </div>
         </div>
       </div>

@@ -20,7 +20,6 @@ const AssignmentsPage = () => {
     <div className="container mx-auto">
       <div className="grid grid-cols-1 gap-8">
         {assignments?.map((item) => {
-          console.log("Item ", item);
           return (
             <div className="w-full" key={`assignment-${item?._id}`}>
               <AssignmentCard assignment={item} />

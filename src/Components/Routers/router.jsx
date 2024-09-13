@@ -5,8 +5,6 @@ import HomePage from "../../pages/home";
 import CreateAssignmentsPage from "../../pages/create-assignments";
 import ContactPage from "../../pages/contactPage";
 import AssignmentsPage from "../../pages/assignmentsPage";
-import LoginPage from "../../pages/loginPage";
-import RegisterPage from "../../pages/registerPage";
 import PendingAssignmentsPage from "../../pages/pending-assignments";
 import UpdateAssignmentsPage from "../../pages/update-assignments";
 import AssignmentPage from "../../pages/assignmentPage";
@@ -22,6 +20,8 @@ import axios from "axios";
 import PendingSubmissionPage from "../../pages/pending-submissionPage";
 import SubmissionsPage from "../../pages/submissionsPage";
 import MySubmissionsPage from "../../pages/mySubmissionsPage";
+import { LoginPage } from "../../pages/login";
+import { RegisterPage } from "../../pages/register";
 
 const router = createBrowserRouter([
   {

@@ -1,7 +1,7 @@
 import React from "react";
 import Lottie from "lottie-react";
 import createFile from "../../../public/assets/lottie/create.json";
-import perticipateFile from "../../../public/assets/lottie/perticipate.json";
+import participateFile from "../../../public/assets/lottie/participate.json";
 import communicateFile from "../../../public/assets/lottie/communicate.json";
 import shareFile from "../../../public/assets/lottie/share.json";
 import knowledgeFile from "../../../public/assets/lottie/knowledge.json";
@@ -26,7 +26,7 @@ const FeatureSection = ({ ...props }) => {
 
         <div className="col-span-2 flex flex-col p-4 border">
           <div className="w-full h-52">
-            <Lottie animationData={perticipateFile} className="h-full" />
+            <Lottie animationData={participateFile} className="h-full" />
           </div>
           <h3>Perticipate Assignment </h3>
         </div>
