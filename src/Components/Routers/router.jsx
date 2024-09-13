@@ -115,6 +115,17 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: "/assignments/:id/:delete",
+        element: (
+          <PrivateRoute>
+            <AssignmentPage />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => {
+          return getAssignmentById(params?.id);
+        },
+      },
+      {
         path: "/contact-us",
         element: <ContactPage />,
       },

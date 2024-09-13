@@ -109,24 +109,29 @@ export const onNotifySuccess = (title) => {
   });
 };
 
-export const onConfrimAlert = (
+export const onConfirmAlert = ({
   title,
+  onConfirm = () => {},
   yesText = "Yes",
   noText = "No",
-  cancelText = "",
-  onConfrim = () => {}
-) => {
+}) => {
   SwalAllert.fire({
     title: title,
     showDenyButton: true,
-    showCancelButton: true,
     confirmButtonText: yesText,
     denyButtonText: noText,
   }).then((result) => {
     if (result.isConfirmed) {
-      onConfrim();
+      onConfirm();
     } else if (result.isDenied) {
-      Swal.fire(cancelText, "", "info");
+      Swal.fire("", "", "info");
     }
   });
+};
+
+export const getBoolean = (val) => {
+  if (/true/i.test(val)) {
+    return true;
+  }
+  return false;
 };
