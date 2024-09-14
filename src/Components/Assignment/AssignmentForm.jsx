@@ -22,6 +22,7 @@ const AssignmentForm = ({
   difficulties = ["easy", "medium", "hard"],
   onSubmitAction,
   name = "Create",
+  isUpdate = false,
 }) => {
   const schema = yup
     .object({
@@ -167,6 +168,7 @@ const AssignmentForm = ({
               <div className="flex flex-col gap-3">
                 <label className="font-bold block">Email:</label>
                 <input
+                  readOnly={isUpdate}
                   type="text"
                   name="userEmail"
                   {...register("userEmail")}
@@ -180,6 +182,7 @@ const AssignmentForm = ({
               <div className="flex flex-col gap-3">
                 <label className="font-bold block">User Name:</label>
                 <input
+                  readOnly={isUpdate}
                   type="text"
                   placeholder="User Name"
                   {...register("userName")}

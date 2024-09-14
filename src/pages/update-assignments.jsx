@@ -76,6 +76,7 @@ const UpdateAssignmentsPage = ({ ...props }) => {
         onSubmitAction={onAssignmentUpdateAction}
         initValues={assignment}
         name="Update"
+        isUpdate={true}
       />
     </React.Fragment>
   );

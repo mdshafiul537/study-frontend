@@ -65,14 +65,10 @@ const AssignmentPage = ({ ...props }) => {
     setIsModalOpen(false);
     onNotify("Sending Assignment Delete request. Please wait ");
     axios
-      .delete(
-        `${import.meta.env.VITE_API_URL}/assignments/${_id}/user/${user.email}`,
-        {
-          headers: REQUEST_HEADER,
-        }
-      )
+      .delete(`${import.meta.env.VITE_API_URL}/assignments/${_id}`, {
+        headers: REQUEST_HEADER,
+      })
       .then((resp) => {
-        console.log("Delete Response, ", resp);
         if (resp.data.status) {
           if (resp.data.response.deletedCount === 1) {
             onNotifySuccess(resp.data.message);
@@ -108,6 +104,7 @@ const AssignmentPage = ({ ...props }) => {
   if (isDataLoading) {
     return <Loading isLoading={isDataLoading} />;
   }
+  console.log("User ", user);
 
   const {
     create,
@@ -130,6 +127,7 @@ const AssignmentPage = ({ ...props }) => {
         itemId="submission-modal"
         content={
           <SubmissionForm
+            name="Submit"
             onSubmit={onAssignmentSubmitAction}
             initialValues={{
               title,
@@ -139,6 +137,8 @@ const AssignmentPage = ({ ...props }) => {
               marks,
               obtainedMarks: 0,
               feedback: null,
+              userEmail: user.email || null,
+              userName: user.displayName || null,
             }}
           />
         }

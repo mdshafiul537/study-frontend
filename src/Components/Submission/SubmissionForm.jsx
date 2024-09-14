@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { NavLink } from "react-router-dom";
 
 const SubmissionForm = ({
+  name = "Take",
   onSubmit,
   initialValues,
   isUpdate = false,
@@ -47,7 +48,7 @@ const SubmissionForm = ({
           <div className="w-2/3 sm:w-full xs:w-full md:w-full lg:w-2/3 flex flex-col my-7">
             <h2 className="text-2xl font-bold mb-5">
               {" "}
-              <span>Submit Assignment | </span>{" "}
+              <span>{name} Assignment | </span>{" "}
               <span>
                 {" "}
                 Marks:
@@ -148,7 +149,7 @@ const SubmissionForm = ({
               <div className="flex flex-row gap-3">
                 <label className="font-bold block w-2/6">Email:</label>
                 <input
-                  //   readOnly
+                  readOnly={isUpdate}
                   type="text"
                   name="userEmail"
                   {...register("userEmail")}
@@ -163,7 +164,7 @@ const SubmissionForm = ({
               <div className="flex flex-row gap-3">
                 <label className="font-bold block w-2/6">User Name:</label>
                 <input
-                  //   readOnly
+                  readOnly={isUpdate}
                   type="text"
                   name="userName"
                   {...register("userName")}

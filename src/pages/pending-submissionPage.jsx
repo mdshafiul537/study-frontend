@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Submissions from "../Components/Submission/Submissions";
 import {
   getStrDate,
@@ -17,6 +17,7 @@ axios.defaults.withCredentials = true;
 axios.defaults.mode = "cors";
 
 import { REQUEST_HEADER } from "../utils/types";
+import { AuthContext } from "../Context/AuthProvider";
 
 const PendingSubmissionPage = () => {
   const submissionResp = useLoaderData();
@@ -25,6 +26,8 @@ const PendingSubmissionPage = () => {
   const [submission, setSubmission] = useState({});
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     if (!isEmptyOrNull(submissionResp)) {
@@ -72,6 +75,7 @@ const PendingSubmissionPage = () => {
     title,
     userEmail,
     userName,
+    examinerEmail,
     _id,
   } = submission;
 
@@ -88,6 +92,7 @@ const PendingSubmissionPage = () => {
         itemId="submission-modal"
         content={
           <SubmissionForm
+            name="Give Mark"
             onSubmit={onAssignmentSubmitAction}
             initialValues={{
               create,
@@ -100,6 +105,7 @@ const PendingSubmissionPage = () => {
               title,
               userEmail,
               userName,
+              examinerEmail: user?.email,
               _id,
             }}
             isUpdate={true}
@@ -115,6 +121,20 @@ const PendingSubmissionPage = () => {
         <div className="col-span-3">
           <div className="grid grid-cols-1 gap-4">
             <h2 className="text-2xl font-bold">{title}</h2>
+            <h3 className="text-xl"></h3>
+            <div className="flex flex-row gap-5 text-xl font-bold items-center">
+              <span>
+                <i className="fa-solid fa-user-pen"></i> {userName}
+              </span>
+              <span>
+                <i className="fa-regular fa-envelope"></i> {userEmail}
+              </span>
+            </div>
+            <div className="flex flex-row gap-2 text-xl font-bold items-center">
+              <span>Examiner:</span>
+              <i className="fa-solid fa-user-check"></i>
+              <span>{examinerEmail}</span>
+            </div>
             <div className="flex flex-row gap-4 font-bold">
               <div className="flex flex-row gap-2 items-center">
                 Marks:<i className="text-amber-600 fa-solid fa-award"></i>
