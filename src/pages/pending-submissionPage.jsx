@@ -43,9 +43,7 @@ const PendingSubmissionPage = () => {
     setIsModalOpen(false);
     onNotify("Please, wait marks is Submitting");
     axios
-      .put(`${import.meta.env.VITE_API_URL}/submissions`, values, {
-        headers: REQUEST_HEADER,
-      })
+      .put(`${import.meta.env.VITE_API_URL}/submissions`, values)
       .then((resp) => {
         if (resp.data.status) {
           onNotifySuccess(resp.data.message);

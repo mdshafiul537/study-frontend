@@ -2,9 +2,15 @@ import axios from "axios";
 
 import { isEmptyOrNull } from "./helper";
 
+axios.defaults.withCredentials = true;
+axios.defaults.mode = "cors";
+
 export const getAssignments = async () => {
   try {
-    const resp = await axios.get(`${import.meta.env.VITE_API_URL}/assignments`);
+    const resp = await axios.get(
+      `${import.meta.env.VITE_API_URL}/assignments`,
+      { withCredentials: true }
+    );
 
     return resp.data;
   } catch (error) {
@@ -26,8 +32,7 @@ export const getAssignmentById = async (id) => {
 export const getAllSubmissionStatus = async (type) => {
   try {
     const resp = await axios.get(
-      `${import.meta.env.VITE_API_URL}/submissions/status?type=${type}`,
-      { withCredentials: true }
+      `${import.meta.env.VITE_API_URL}/submissions/status?type=${type}`
     );
 
     return resp.data;
@@ -38,10 +43,7 @@ export const getAllSubmissionStatus = async (type) => {
 
 export const getAllSubmission = async (type) => {
   try {
-    const resp = await axios.get(
-      `${import.meta.env.VITE_API_URL}/submissions`,
-      { withCredentials: true }
-    );
+    const resp = await axios.get(`${import.meta.env.VITE_API_URL}/submissions`);
 
     return resp.data;
   } catch (error) {
@@ -52,8 +54,7 @@ export const getAllSubmission = async (type) => {
 export const getAllSubmissionByUser = async (user) => {
   try {
     const resp = await axios.get(
-      `${import.meta.env.VITE_API_URL}/submissions/user/${user}`,
-      { withCredentials: true }
+      `${import.meta.env.VITE_API_URL}/submissions/user/${user}`
     );
 
     return resp.data;
@@ -65,8 +66,7 @@ export const getAllSubmissionByUser = async (user) => {
 export const getSubmissionById = async (id) => {
   try {
     const resp = await axios.get(
-      `${import.meta.env.VITE_API_URL}/submissions/${id}`,
-      { withCredentials: true }
+      `${import.meta.env.VITE_API_URL}/submissions/${id}`
     );
 
     return resp.data;
@@ -79,8 +79,7 @@ export const getAccessToken = async (user) => {
   try {
     const resp = await axios.post(
       `${import.meta.env.VITE_API_URL}/auth/token`,
-      { userEmail: user },
-      { withCredentials: true }
+      { userEmail: user }
     );
 
     return resp.data;
@@ -93,8 +92,7 @@ export const getSignOut = async (user) => {
   try {
     const resp = await axios.post(
       `${import.meta.env.VITE_API_URL}/auth/logout`,
-      {},
-      { withCredentials: true }
+      {}
     );
 
     console.log("Sign out Resp, ", resp);

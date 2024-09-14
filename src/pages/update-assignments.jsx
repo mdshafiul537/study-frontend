@@ -40,11 +40,10 @@ const UpdateAssignmentsPage = ({ ...props }) => {
     axios
       .put(`${import.meta.env.VITE_API_URL}/assignments`, values)
       .then((resp) => {
-        console.log("axios Update, ", resp);
         if (!isEmptyOrNull(resp.data)) {
           if (resp.data.status) {
             onNotifySuccess(resp.data.message);
-            console.log("Assignment Update ", resp.data.response);
+
             navigate("/assignments");
           } else {
             onNotifyError("Item add failed");
