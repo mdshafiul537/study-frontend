@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { createContext, useEffect, useState } from "react";
-
+import axios from "axios";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -16,9 +16,12 @@ import {
 
 import fireBaseApp from "../utils/firebase-config";
 
-import axios from "axios";
 import { isEmptyOrNull, onNotifyError, onNotifySuccess } from "../utils/helper";
-import { addUserUsingAPI } from "../utils/loaderAction";
+import {
+  addUserUsingAPI,
+  getAccessToken,
+  getSignOut,
+} from "../utils/loaderAction";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children, ...props }) => {
@@ -34,6 +37,7 @@ const AuthProvider = ({ children, ...props }) => {
     signOut(auth)
       .then((resp) => {
         onNotifySuccess("You are logout");
+        getSignOut();
       })
       .catch((error) => {
         onNotifyError("Log Out failed!! ", error.message);
@@ -152,6 +156,12 @@ const AuthProvider = ({ children, ...props }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setIsLoading(false);
+      const userEmail = currentUser?.email || user?.email;
+      if (!isEmptyOrNull(currentUser)) {
+        getAccessToken(userEmail);
+      } else {
+        console.log("User Not Found");
+      }
     });
 
     return () => {

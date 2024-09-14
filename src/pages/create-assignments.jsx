@@ -13,6 +13,10 @@ import {
 } from "../utils/helper";
 import AssignmentForm from "../Components/Assignment/AssignmentForm";
 import { AuthContext } from "../Context/AuthProvider";
+import { REQUEST_HEADER } from "../utils/types";
+
+axios.defaults.withCredentials = true;
+axios.defaults.mode = "cors";
 
 const CreateAssignmentsPage = ({ ...props }) => {
   const { user } = useContext(AuthContext);
@@ -20,7 +24,9 @@ const CreateAssignmentsPage = ({ ...props }) => {
   const onCreateAssignmentAction = (values, reset) => {
     onNotify("Sending item add request. Please wait");
     axios
-      .post(`${import.meta.env.VITE_API_URL}/assignments`, values)
+      .post(`${import.meta.env.VITE_API_URL}/assignments`, values, {
+        headers: REQUEST_HEADER,
+      })
       .then((resp) => {
         if (!isEmptyOrNull(resp.data)) {
           if (resp.data.status) {

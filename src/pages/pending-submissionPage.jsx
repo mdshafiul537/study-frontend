@@ -11,7 +11,12 @@ import Loading from "../Components/Utils/Loading";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import EsModal from "../Components/Utils/EsModal";
 import SubmissionForm from "../Components/Submission/SubmissionForm";
+
 import axios from "axios";
+axios.defaults.withCredentials = true;
+axios.defaults.mode = "cors";
+
+import { REQUEST_HEADER } from "../utils/types";
 
 const PendingSubmissionPage = () => {
   const submissionResp = useLoaderData();
@@ -38,7 +43,9 @@ const PendingSubmissionPage = () => {
     setIsModalOpen(false);
     onNotify("Please, wait marks is Submitting");
     axios
-      .put(`${import.meta.env.VITE_API_URL}/submissions`, values)
+      .put(`${import.meta.env.VITE_API_URL}/submissions`, values, {
+        headers: REQUEST_HEADER,
+      })
       .then((resp) => {
         if (resp.data.status) {
           onNotifySuccess(resp.data.message);

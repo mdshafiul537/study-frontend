@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import AssignmentCard from "../Components/Assignment/AssignmentCard";
 import { useLoaderData, useParams, useNavigate } from "react-router-dom";
+
 import axios from "axios";
+axios.defaults.withCredentials = true;
+axios.defaults.mode = "cors";
+
 import Loading from "../Components/Utils/Loading";
 import {
   getBoolean,
@@ -15,6 +19,7 @@ import {
 import EsModal from "../Components/Utils/EsModal";
 import SubmissionForm from "../Components/Submission/SubmissionForm";
 import { AuthContext } from "../Context/AuthProvider";
+import { REQUEST_HEADER } from "../utils/types";
 
 const AssignmentPage = ({ ...props }) => {
   const params = useParams();
@@ -41,7 +46,9 @@ const AssignmentPage = ({ ...props }) => {
     setIsModalOpen(false);
     onNotify("Please, wait Assignment is Submitting");
     axios
-      .post(`${import.meta.env.VITE_API_URL}/submissions`, values)
+      .post(`${import.meta.env.VITE_API_URL}/submissions`, values, {
+        headers: REQUEST_HEADER,
+      })
       .then((resp) => {
         if (resp.data.status) {
           onNotifySuccess(resp.data.message);
@@ -59,7 +66,10 @@ const AssignmentPage = ({ ...props }) => {
     onNotify("Sending Assignment Delete request. Please wait ");
     axios
       .delete(
-        `${import.meta.env.VITE_API_URL}/assignments/${_id}/user/${user.email}`
+        `${import.meta.env.VITE_API_URL}/assignments/${_id}/user/${user.email}`,
+        {
+          headers: REQUEST_HEADER,
+        }
       )
       .then((resp) => {
         console.log("Delete Response, ", resp);

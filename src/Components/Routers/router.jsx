@@ -16,7 +16,6 @@ import {
   getAssignments,
   getSubmissionById,
 } from "../../utils/loaderAction";
-import axios from "axios";
 import PendingSubmissionPage from "../../pages/pending-submissionPage";
 import SubmissionsPage from "../../pages/submissionsPage";
 import MySubmissionsPage from "../../pages/mySubmissionsPage";
@@ -68,7 +67,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/pending-assignments",
-        element: <PendingAssignmentsPage />,
+        element: (
+          <PrivateRoute>
+            <PendingAssignmentsPage />
+          </PrivateRoute>
+        ),
         loader: async () => {
           return getAllSubmissionStatus("Pending");
         },

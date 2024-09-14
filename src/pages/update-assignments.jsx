@@ -15,6 +15,11 @@ import {
 } from "../utils/helper";
 import AssignmentForm from "../Components/Assignment/AssignmentForm";
 import Loading from "../Components/Utils/Loading";
+import { REQUEST_HEADER } from "../utils/types";
+import esFetchApi from "../utils/fetchApi";
+
+axios.defaults.withCredentials = true;
+axios.defaults.mode = "cors";
 
 const UpdateAssignmentsPage = ({ ...props }) => {
   const assignmentResp = useLoaderData();
@@ -35,6 +40,7 @@ const UpdateAssignmentsPage = ({ ...props }) => {
     axios
       .put(`${import.meta.env.VITE_API_URL}/assignments`, values)
       .then((resp) => {
+        console.log("axios Update, ", resp);
         if (!isEmptyOrNull(resp.data)) {
           if (resp.data.status) {
             onNotifySuccess(resp.data.message);
@@ -47,6 +53,7 @@ const UpdateAssignmentsPage = ({ ...props }) => {
       })
       .catch((error) => {
         onNotifyError(error.message);
+        console.log("Fetch Update, error, ", error);
       });
   };
 
