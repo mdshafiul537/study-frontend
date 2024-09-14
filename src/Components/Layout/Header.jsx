@@ -7,7 +7,7 @@ import { RightNav } from "./RightNav";
 
 const Header = () => {
   return (
-    <div className="w-full bg-emerald-700">
+    <div className="w-full bg-emerald-700 dark:bg-emerald-900">
       <ToastContainer />
       <div className="container mx-auto">
         <div className="navbar ">
@@ -35,7 +35,7 @@ const Header = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content rounded-box z-50 mt-3 w-52 p-2 shadow bg-gray-500"
+                className="menu menu-sm dropdown-content rounded-box z-50 mt-3 w-52 p-2 shadow bg-gray-500 "
               >
                 <NavBar />
               </ul>

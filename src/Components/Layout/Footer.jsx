@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="footer  p-10 bg-emerald-700 text-white">
+    <footer className="footer  p-10 bg-emerald-700 dark:bg-emerald-900 text-white">
       <aside>
         <span className="text-2xl">
         <i className="fa-solid fa-object-group"></i>

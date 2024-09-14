@@ -46,7 +46,7 @@ const SubmissionCard = ({ submission, ...props }) => {
           <div className="">
             <NavLink
               to={`/submissions/${_id}`}
-              className="px-5 py-1 bg-emerald-700 text-white font-bold"
+              className="px-5 py-1 bg-emerald-700 dark:bg-emerald-900 text-white font-bold"
             >
               Details
             </NavLink>

@@ -26,7 +26,7 @@ const HomeBanner = ({ ...props }) => {
           <div className="w-full">
             <NavLink
               to="/login"
-              className="bg-emerald-700 px-5 py-2 cursor-pointer text-white hover:bg-emerald-900 font-bold"
+              className="bg-emerald-700 dark:bg-emerald-900 px-5 py-2 cursor-pointer text-white hover:bg-emerald-900 font-bold"
             >
               Get Started
             </NavLink>
