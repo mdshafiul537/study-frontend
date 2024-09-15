@@ -13,11 +13,11 @@ const FeatureSection = ({ ...props }) => {
     <div className="w-full grid grid-cols-1 font-bold py-8 gap-6">
       <div className="text-center">
         <h2 className="text-3xl font-bold text-center py-4">
-          <span className="px-8 border-b border-gray-400">Our Feature</span>
+          <span className="px-8 border-b border-gray-400 ">Our Feature</span>
         </h2>
       </div>
-      <div className="grid grid-cols-12 gap-6">
-        <div className="col-span-2 flex flex-col p-4 border ">
+      <div className="grid grid-cols-12 md:grid-cols-12 xs:grid-cols-1 sm:grid-cols-1 gap-6 ">
+        <div className="col-span-2 flex flex-col p-4 border">
           <div className="w-full h-52 ">
             <Lottie animationData={createFile} className="h-full" />
           </div>

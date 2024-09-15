@@ -18,6 +18,8 @@ axios.defaults.mode = "cors";
 
 import { REQUEST_HEADER } from "../utils/types";
 import { AuthContext } from "../Context/AuthProvider";
+import Iframe from "react-iframe";
+import EsIframe from "../Components/Utils/EsIframe";
 
 const PendingSubmissionPage = () => {
   const submissionResp = useLoaderData();
@@ -112,17 +114,19 @@ const PendingSubmissionPage = () => {
           />
         }
       />
-      <div className="grid grid-cols-5 gap-8 py-9">
-        <div className="col-span-2">
-          <div className="h-[650px] overflow-hidden">
-            <img src={resourcesURL} className="" />
+      <div className="grid grid-cols-12 sm:grid-cols-1 xs:grid-cols-1 md:grid-cols-12  gap-8 py-9">
+        <div className="col-span-12 xs:col-span-1 sm:col-span-1 md:col-span-12 py-2">
+          <h2 className="text-2xl font-bold border-b pb-3">{title}</h2>
+        </div>
+        <div className="col-span-8 xs:col-span-1 sm:col-span-1 md:col-span-8">
+          <div className="min-h-[450px] overflow-hidden max-[90%]:">
+            {/* <img src={resourcesURL} className="" /> */}
+            <EsIframe src={resourcesURL} />
           </div>
         </div>
-        <div className="col-span-3">
+        <div className="col-span-4 xs:col-span-1 sm:col-span-1 md:col-span-4">
           <div className="grid grid-cols-1 gap-4">
-            <h2 className="text-2xl font-bold">{title}</h2>
-            <h3 className="text-xl"></h3>
-            <div className="flex flex-row gap-5 text-xl font-bold items-center">
+            <div className="flex flex-row flex-wrap gap-5 text-xl font-bold items-center">
               <span>
                 <i className="fa-solid fa-user-pen"></i> {userName}
               </span>
@@ -135,7 +139,7 @@ const PendingSubmissionPage = () => {
               <i className="fa-solid fa-user-check"></i>
               <span>{examinerEmail}</span>
             </div>
-            <div className="flex flex-row gap-4 font-bold">
+            <div className="flex flex-row flex-wrap gap-4 font-bold">
               <div className="flex flex-row gap-2 items-center">
                 Marks:<i className="text-amber-600 fa-solid fa-award"></i>
                 {marks}

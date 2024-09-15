@@ -4,7 +4,7 @@ import QuoteItem from "./QuoteItem";
 const Quotes = () => {
   return (
     <div className="w-full">
-      <div className="grid grid-cols-2 gap-7">
+      <div className="grid grid-cols-2 md:grid-cols-2 xs:grid-cols-1 sm:grid-cols-1 gap-7">
         <QuoteItem
           title="Study Together is great"
           quote="Study Together is perfect no flaws no nothing. It gives me a purpose

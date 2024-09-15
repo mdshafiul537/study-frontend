@@ -34,8 +34,6 @@ const SubmissionForm = ({
     reset,
   } = useForm({ resolver: yupResolver(schema), defaultValues: initialValues });
 
-  console.log("initialValues ", initialValues);
-
   const onSubmitAction = (values) => {
     console.log("onSubmit, ", values);
     onSubmit(values, reset);
@@ -45,7 +43,7 @@ const SubmissionForm = ({
     <React.Fragment>
       <div className="container mx-auto">
         <div className="w-full flex flex-col items-center justify-center">
-          <div className="w-2/3 sm:w-full xs:w-full md:w-full lg:w-2/3 flex flex-col my-7">
+          <div className="w-2/3 sm:w-full xs:w-full md:w-full lg:w-5/6 flex flex-col my-7">
             <h2 className="text-2xl font-bold mb-5">
               {" "}
               <span>{name} Assignment | </span>{" "}
@@ -68,7 +66,7 @@ const SubmissionForm = ({
                   placeholder="Title"
                   name="title"
                   readOnly
-                  className={`input input-bordered input-sm input-success w-full`}
+                  className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full`}
                   {...register("title")}
                 />
                 <p className="text-base text-red-600 font-semibold">
@@ -78,10 +76,10 @@ const SubmissionForm = ({
 
               {isUpdate ? (
                 <div className="flex flex-row gap-3 items-center">
-                  <label className="font-bold block w-1/4">
+                  <label className="font-bold block w-2/6">
                     Resources URL:
                   </label>{" "}
-                  <span className="bg-gray-300 px-2 py-1 shadow-xl ">
+                  <span className="bg-gray-300 dark:bg-slate-800 px-2 py-1 shadow-xl ">
                     {getValues("resourcesURL")}
                   </span>
                   <NavLink
@@ -89,7 +87,7 @@ const SubmissionForm = ({
                     className=" text-white"
                     to={getValues("resourcesURL")}
                   >
-                    <span className="bg-sky-700 px-2 py-1 shadow-xl">
+                    <span className="bg-sky-700 dark:bg-sky-500 px-2 py-1 shadow-xl">
                       <i className="fa-solid fa-arrow-up-right-from-square"></i>
                     </span>
                   </NavLink>{" "}
@@ -102,7 +100,7 @@ const SubmissionForm = ({
                   <input
                     type="text"
                     placeholder="Resources URL"
-                    className={`input input-bordered input-sm input-success w-full`}
+                    className={`dark:bg-[rgba(0,0,0,.4)]  input input-bordered input-sm input-success w-full`}
                     readOnly={isUpdate}
                     {...register("resourcesURL")}
                   />
@@ -119,7 +117,7 @@ const SubmissionForm = ({
                     type="text"
                     placeholder="Feedback"
                     {...register("feedback")}
-                    className={`input input-bordered input-sm input-success w-full h-40 `}
+                    className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full h-40 `}
                   ></textarea>
                 </div>
               ) : (
@@ -136,7 +134,7 @@ const SubmissionForm = ({
                     name="obtainedMarks"
                     {...register("obtainedMarks")}
                     placeholder="Obtained Marks:"
-                    className={`input input-bordered input-sm input-success w-full`}
+                    className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full`}
                   />
                   <p className="text-base text-red-600 font-semibold">
                     {errors.obtainedMarks?.message}
@@ -149,12 +147,12 @@ const SubmissionForm = ({
               <div className="flex flex-row gap-3">
                 <label className="font-bold block w-2/6">Email:</label>
                 <input
-                  readOnly={isUpdate}
+                  readOnly
                   type="text"
                   name="userEmail"
                   {...register("userEmail")}
                   placeholder="User Email"
-                  className={`input input-bordered input-sm input-success w-full`}
+                  className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full`}
                 />
                 <p className="text-base text-red-600 font-semibold">
                   {errors.userEmail?.message}
@@ -164,12 +162,12 @@ const SubmissionForm = ({
               <div className="flex flex-row gap-3">
                 <label className="font-bold block w-2/6">User Name:</label>
                 <input
-                  readOnly={isUpdate}
+                  readOnly
                   type="text"
                   name="userName"
                   {...register("userName")}
                   placeholder="User Name:"
-                  className={`input input-bordered input-sm input-success w-full`}
+                  className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full`}
                 />
                 <p className="text-base text-red-600 font-semibold">
                   {errors.userName?.message}

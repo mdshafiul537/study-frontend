@@ -125,12 +125,12 @@ const AssignmentForm = ({
                   className={`input input-bordered input-sm input-success w-full`}
                 />
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 dark:text-teal-50">
                 <label className="font-bold block">Premium:</label>
                 <div className="flex flex-row items-center gap-6">
                   <div className="form-control">
                     <label className="label cursor-pointer">
-                      <span className="label-text">Yes&nbsp;</span>
+                      <span>Yes&nbsp;</span>
                       <input
                         type="radio"
                         name="isPremium"
@@ -142,7 +142,7 @@ const AssignmentForm = ({
                   </div>
                   <div className="form-control">
                     <label className="label cursor-pointer">
-                      <span className="label-text">No&nbsp;</span>
+                      <span>No&nbsp;</span>
                       <input
                         type="radio"
                         name="isPremium"

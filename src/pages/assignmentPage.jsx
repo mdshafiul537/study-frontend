@@ -143,37 +143,39 @@ const AssignmentPage = ({ ...props }) => {
           />
         }
       />
-      <div className="grid grid-cols-5 gap-8 py-9 min-h-[400px]">
-        <div className="col-span-2">
-          <img src={thumbnail} className="" />
+      <div className="grid grid-cols-5 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-5 gap-8 py-9 min-h-[400px]">
+        <div className="col-span-2 xs:col-span-1 sm:col-span-1 md:col-span-2">
+          <img src={thumbnail} className="w-full" />
         </div>
-        <div className="col-span-3">
+        <div className="col-span-3 xs:col-span-1 sm:col-span-1 md:col-span-3">
           <div className="grid grid-cols-1 gap-4">
             <h2 className="text-2xl font-bold">{title}</h2>
-            <div className="flex flex-row gap-4 font-bold">
-              <div className="flex flex-row gap-1 items-center">
-                Marks:<i className="text-amber-600 fa-solid fa-award"></i>
+            <div className="flex flex-row xs:flex-wrap sm:flex-wrap md:flex-nowrap gap-4 font-bold">
+              <div className="flex flex-row gap-2 items-center dark:text-xl dark:font-semibold">
+                Marks:
+                <i className="text-amber-700 dark:text-orange-800 fa-solid fa-award"></i>
                 {marks}
               </div>
-              <div className="flex flex-row gap-1 items-center">
+              <div className="flex flex-row gap-2 items-center dark:text-xl dark:font-semibold">
                 Difficulty Level:
-                <i className="text-red-500 fa-solid fa-layer-group"></i>
+                <i className="text-red-500 dark:text-red-800  fa-solid fa-layer-group"></i>
                 {difficulty}
               </div>
-              <div className="flex flex-row gap-1 items-center">
-                Due Date: <i className="text-red-500 fa-regular fa-clock"></i>
+              <div className="flex flex-row gap-2 items-center dark:text-xl dark:font-semibold">
+                Due Date:{" "}
+                <i className="text-emerald-700 dark:text-red-800 fa-regular fa-clock"></i>
                 {getStrDate(dueDate)}
               </div>
             </div>
             <p>{description}</p>
           </div>
         </div>
-        <div className="w-full my-6 col-span-5">
+        <div className="w-full my-6 col-span-5 xs:col-span-1 sm:col-span-1 md:col-span-5">
           <div className="flex flex-row gap-6">
             {getBoolean(params?.delete) ? (
               <div className="">
                 <button
-                  className="bg-red-600 px-6 py-3 text-white font-bold cursor-pointer"
+                  className="bg-red-600 dark:bg-red-900 px-6 py-3 text-white font-bold cursor-pointer"
                   onClick={onDeleteModalToggle}
                 >
                   Delete this assignment
@@ -182,7 +184,7 @@ const AssignmentPage = ({ ...props }) => {
             ) : (
               <div className="">
                 <button
-                  className="bg-emerald-800 px-6 py-3 text-white font-bold cursor-pointer"
+                  className="bg-emerald-700 dark:bg-emerald-900 dark:shadow-2xl  px-6 py-3 text-white font-bold cursor-pointer"
                   onClick={onModalToggle}
                 >
                   Take Assignment

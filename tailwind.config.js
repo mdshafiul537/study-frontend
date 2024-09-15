@@ -8,11 +8,6 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
-      container: {
-        width: {
-          xs: `100%`,
-        },
-      },
       screens: {
         xs: { min: "350px", max: "639px" },
       },
@@ -23,5 +18,5 @@ export default {
       },
     },
   },
-  plugins: [daisyui],
+  plugins: [daisyui, require("@tailwindcss/aspect-ratio")],
 };

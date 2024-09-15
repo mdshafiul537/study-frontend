@@ -65,7 +65,7 @@ export const RegisterPage = () => {
         <div className="container mx-auto grid grid-cols-7">
           <div className="col-span-4 py-6">
             <div className="w-full min-h-screen flex flex-col items-center justify-center">
-              <div className="card card-compact w-96 shadow-xl border-emerald-500 bg-[rgba(255,255,255,.3)] dark:bg-[rgba(0,0,0,.6)] border">
+              <div className="card card-compact w-96 shadow-xl border-emerald-500 dark:border-emerald-700 bg-[rgba(255,255,255,.1)] dark:bg-[rgba(0,0,0,.35)] border">
                 <div className="card-body">
                   <div className=" flex flex-col justify-center items-center gap-4">
                     <h2 className="text-white text-xl font-bold">
@@ -79,7 +79,7 @@ export const RegisterPage = () => {
                       className="flex flex-col gap-6 bg-transparent"
                       onSubmit={handleSubmit(onSubmit)}
                     >
-                      <label className="input input-bordered flex items-center gap-2">
+                      <label className="input input-bordered flex items-center gap-2 dark:bg-[rgba(0,0,0,.3)]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 16 16"
@@ -98,7 +98,7 @@ export const RegisterPage = () => {
                       <p className="text-base text-red-600 font-semibold">
                         {errors.name?.message}
                       </p>
-                      <label className="input input-bordered flex items-center gap-2">
+                      <label className="input input-bordered flex items-center gap-2 dark:bg-[rgba(0,0,0,.3)]">
                         <i className="fa-regular fa-envelope"></i>
                         <input
                           type="text"
@@ -110,7 +110,7 @@ export const RegisterPage = () => {
                       <p className="text-base text-red-600 font-semibold">
                         {errors.email?.message}
                       </p>
-                      <label className="input input-bordered flex items-center gap-2">
+                      <label className="input input-bordered flex items-center gap-2 dark:bg-[rgba(0,0,0,.3)]">
                         <i className="fa-regular fa-image"></i>
                         <input
                           type="text"
@@ -119,7 +119,7 @@ export const RegisterPage = () => {
                           {...register("photoURL")}
                         />
                       </label>
-                      <label className="input input-bordered flex items-center gap-2">
+                      <label className="input input-bordered flex items-center gap-2 dark:bg-[rgba(0,0,0,.3)]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 16 16"
@@ -157,7 +157,7 @@ export const RegisterPage = () => {
                       <p className="text-base text-red-600 font-semibold">
                         {errors.password?.message}
                       </p>
-                      <label className="input input-bordered flex items-center gap-2 !bg-green-700 text-white font-bold cursor-pointer">
+                      <label className="transition-all duration-300 hover:text-lg text-xl input input-bordered flex items-center gap-2 !bg-green-700 text-white font-bold cursor-pointer ">
                         <input
                           type="submit"
                           className="grow !bg-green-700 cursor-pointer"
@@ -167,10 +167,10 @@ export const RegisterPage = () => {
                     </form>
                   </div>
 
-                  <div className="flex flex-row w-full justify-center items-center gap-7 h-24">
+                  <div className="flex flex-row w-full justify-center items-center gap-7">
                     <NavLink
                       to="/login"
-                      className=" w-full border text-gray-800 text-center px-2 py-2 bg-white font-bold rounded-md"
+                      className="h-12 flex flex-row items-center justify-center transition-all duration-300 w-full border text-gray-800 text-center px-2 py-2 bg-white font-bold rounded-md dark:text-teal-50 dark:hover:bg-[rgba(0,0,0,.6)] hover:text-lg dark:bg-[rgba(0,0,0,.3)]"
                     >
                       <i className="fa-solid fa-unlock"></i>&nbsp;Login
                     </NavLink>

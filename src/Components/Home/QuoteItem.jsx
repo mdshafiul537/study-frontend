@@ -10,7 +10,7 @@ const QuoteItem = ({
 }) => {
   return (
     <div className="flex flex-col items-center gap-5">
-      <div className="text-4xl font-semibold text-gray-400">
+      <div className="text-4xl font-semibold text-gray-400 dark:text-teal-50">
         <i className="fa-solid fa-quote-left"></i>
       </div>
       <h3 className="text-center text-xl font-bold ">{title}</h3>

@@ -28,7 +28,9 @@ const HomePage = () => {
       <section className="container mx-auto my-8">
         <div className="grid grid-cols-1 gap-8">
           <div className="">
-            <h3 className="text-2xl font-bold text-center">Students Quote's</h3>
+            <h3 className="text-2xl font-bold text-center">
+              <span className="py-2 px-5 border-b dark:border-b-teal-50">Students Quote's</span>{" "}
+            </h3>
           </div>
           <Quotes />
         </div>

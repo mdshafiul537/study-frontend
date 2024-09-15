@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .container {
+    @apply xs:max-w-[90%];
+    @apply xs:min-w-[85%];
+  }
+}

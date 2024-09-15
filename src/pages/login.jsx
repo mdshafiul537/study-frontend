@@ -75,7 +75,7 @@ export const LoginPage = () => {
               <Lottie animationData={loginFile} className="h-full" />
             </div>
             <div className=" col-span-2 grid grid-cols-1 h-[580px] justify-center items-center">
-              <div className="py-4 w-10/12 bg-[rgba(255,255,255,.3)] p-5 ">
+              <div className="py-4 w-10/12 bg-[rgba(255,255,255,.3)] dark:bg-[rgba(0,0,0,.3)] p-5 ">
                 <h2 className="text-center text-2xl py-4 font-bold">Login</h2>
                 <div className="">
                   <form
@@ -83,7 +83,7 @@ export const LoginPage = () => {
                     className="flex flex-col gap-6 bg-transparent"
                     onSubmit={handleSubmit(onSubmit)}
                   >
-                    <label className="input input-bordered flex items-center gap-2">
+                    <label className="input input-bordered flex items-center gap-2 dark:bg-[rgba(0,0,0,.45)]">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -99,7 +99,7 @@ export const LoginPage = () => {
                         {...register("username", { required: true })}
                       />
                     </label>
-                    <label className="input input-bordered flex items-center gap-2">
+                    <label className="input input-bordered flex items-center gap-2 dark:bg-[rgba(0,0,0,.45)]">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -114,7 +114,7 @@ export const LoginPage = () => {
                       </svg>
                       <input
                         type={isShow ? "text" : "password"}
-                        className="grow"
+                        className="grow "
                         placeholder="Password"
                         {...register("password", { required: true })}
                       />
