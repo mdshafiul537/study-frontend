@@ -12,7 +12,6 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@vitejs/plugin-react": "^4.3.1",
-    "aos": "^3.0.0-beta.6",
     "axios": "^1.7.7",
     "firebase": "^10.13.1",
     "lottie-react": "^2.4.0",
@@ -22,16 +21,11 @@
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.53.0",
-    "react-iframe": "^1.8.5",
     "react-router-dom": "^6.26.1",
-    "react-scripts": "^5.0.1",
-    "react-simple-typewriter": "^5.0.1",
     "react-toastify": "^10.0.5",
-    "react-tooltip": "^5.28.0",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.13.3",
     "sweetalert2-react-content": "^5.0.7",
-    "swiper": "^11.1.12",
     "yup": "^1.4.0"
   },
   "devDependencies": {
