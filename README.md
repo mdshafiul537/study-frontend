@@ -7,11 +7,8 @@
 - Student Participate/Take any Assignment.
 - Examine Assignment And give marks also give some Feedback.
 - Only Assignment owner Can delete it.
-- Student get all submitted Assignment together as list
+- Student get all submitted Assignment together as list (By User)
 - Filter Assignment By there Difficulty Level
-- Also have my art & craft items (By User).
-- Adding user/customer.
-- User/Customer can add art & craft items. Also Can remove item.
 - User can login via google, github (if needed more option than it could be
   added easily).
 - This template provides a minimal setup to get React working in Vite with HMR

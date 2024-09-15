@@ -41,6 +41,18 @@ export const getAllSubmissionStatus = async (type) => {
   }
 };
 
+export const getAllAssignmentByDifficulty = async (level) => {
+  try {
+    const resp = await axios.get(
+      `${import.meta.env.VITE_API_URL}/assignments/difficulty?level=${level}`
+    );
+
+    return resp.data;
+  } catch (error) {
+    console.log("getAllSubmission Error, ", error);
+  }
+};
+
 export const getAllSubmission = async (type) => {
   try {
     const resp = await axios.get(`${import.meta.env.VITE_API_URL}/submissions`);
@@ -103,4 +115,15 @@ export const getSignOut = async (user) => {
   }
 };
 
-export const addUserUsingAPI = async (user) => {};
+export const addUserUsingAPI = async (user) => {
+  try {
+    const resp = await axios.post(
+      `${import.meta.env.VITE_API_URL}/users`,
+      user
+    );
+
+    return resp.data;
+  } catch (error) {
+    console.log("User Added Error,", error);
+  }
+};
