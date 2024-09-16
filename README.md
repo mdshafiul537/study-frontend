@@ -3,16 +3,19 @@
 #### Showcase All kind Textile Arts.
 
 - Awesome looking home page.
+- You can stich them light/dark .
 - Student can Add, Update, View Assignment.
 - Student Participate/Take any Assignment.
 - Examine Assignment And give marks also give some Feedback.
 - Only Assignment owner Can delete it.
 - Student get all submitted Assignment together as list (By User)
 - Filter Assignment By there Difficulty Level
+- Anyone can drop message to us via our contact us form.
 - User can login via google, github (if needed more option than it could be
   added easily).
 - This template provides a minimal setup to get React working in Vite with HMR
   and some ESLint rules.
+
 
 ### Official plugins are available:
 

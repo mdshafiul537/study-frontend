@@ -43,9 +43,7 @@ const Footer = () => {
                 <li className="text-white font-semibold border-b border-transparent hover:bg-none hover:border-white">
                   <NavLink to="/contact-us">Contact Us</NavLink>
                 </li>
-                <NavLink to={"/contact-us"} className="link link-hover">
-                  Contact Us
-                </NavLink>
+
                 <NavLink to="/register" className="link link-hover">
                   Register
                 </NavLink>
