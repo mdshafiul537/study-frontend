@@ -83,7 +83,7 @@ export const RightNav = () => {
               </span>
             )}
           </div>
-          <div className="w-9 h-9 rounded-full ring-2 ring-offset-2 ring-gray-700 dark:ring-white">
+          <div className="w-9 h-9 rounded-full ring-2 ring-offset-2 ring-gray-700 dark:ring-teal-400">
             <img
               alt={user?.displayName}
               src={user?.photoURL}

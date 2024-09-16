@@ -18,7 +18,7 @@ axios.defaults.mode = "cors";
 
 import { REQUEST_HEADER } from "../utils/types";
 import { AuthContext } from "../Context/AuthProvider";
-import Iframe from "react-iframe";
+
 import EsIframe from "../Components/Utils/EsIframe";
 
 const PendingSubmissionPage = () => {

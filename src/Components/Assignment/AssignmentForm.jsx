@@ -69,7 +69,7 @@ const AssignmentForm = ({
                   type="text"
                   placeholder="Title"
                   name="title"
-                  className={`input input-bordered input-sm input-success w-full`}
+                  className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full`}
                   {...register("title")}
                 />
                 <p className="text-base text-red-600 font-semibold">
@@ -82,7 +82,7 @@ const AssignmentForm = ({
                   type="text"
                   placeholder="Thumbnail URL"
                   name="thumbnail"
-                  className={`input input-bordered input-sm input-success w-full`}
+                  className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full`}
                   {...register("thumbnail")}
                 />
                 <p className="text-base text-red-600 font-semibold">
@@ -92,15 +92,21 @@ const AssignmentForm = ({
               <div className="flex flex-col gap-3">
                 <label className="font-bold block">Difficulty:</label>
                 <select
-                  className="select select-success w-full"
+                  className="dark:bg-[rgba(0,0,0,.4)] select select-success w-full"
                   {...register("difficulty")}
-                  name="difficulty"
                 >
                   <option disabled selected>
                     Select One
                   </option>
                   {difficulties?.map((difficulty) => {
-                    return <option value={difficulty}>{difficulty}</option>;
+                    return (
+                      <option
+                        className="dark:bg-[rgba(0,0,0,.4)]"
+                        value={difficulty}
+                      >
+                        {difficulty}
+                      </option>
+                    );
                   })}
                 </select>
               </div>
@@ -111,7 +117,7 @@ const AssignmentForm = ({
                   placeholder="description"
                   name="description"
                   {...register("description")}
-                  className={`input input-bordered input-sm input-success w-full h-40`}
+                  className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full h-40`}
                 ></textarea>
               </div>
 
@@ -122,7 +128,7 @@ const AssignmentForm = ({
                   name="marks"
                   {...register("marks")}
                   placeholder="Marks"
-                  className={`input input-bordered input-sm input-success w-full`}
+                  className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full`}
                 />
               </div>
               <div className="flex flex-col gap-3 dark:text-teal-50">
@@ -135,7 +141,7 @@ const AssignmentForm = ({
                         type="radio"
                         name="isPremium"
                         {...register("isPremium")}
-                        className="radio checked:bg-green-500"
+                        className=" dark:border-black border-2 radio dark:checked:bg-green-700 checked:bg-green-500"
                         value={true}
                       />
                     </label>
@@ -147,7 +153,7 @@ const AssignmentForm = ({
                         type="radio"
                         name="isPremium"
                         value={false}
-                        className="radio checked:bg-red-500"
+                        className=" dark:border-black border-2 radio checked:bg-red-500 dark:checked:bg-red-600"
                         {...register("isPremium")}
                       />
                     </label>
@@ -161,7 +167,7 @@ const AssignmentForm = ({
                     setValue("dueDate", date);
                   }}
                   {...register("dueDate")}
-                  className="w-full outline-none border border-green-500 h-9 rounded-lg pl-3"
+                  className="dark:bg-[rgba(0,0,0,.4)] w-full outline-none border border-green-500 h-9 rounded-lg pl-3"
                 />
               </div>
 
@@ -173,7 +179,7 @@ const AssignmentForm = ({
                   name="userEmail"
                   {...register("userEmail")}
                   placeholder="User Email"
-                  className={`input input-bordered input-sm input-success w-full`}
+                  className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full`}
                 />
                 <p className="text-base text-red-600 font-semibold">
                   {errors.userEmail?.message}
@@ -187,7 +193,7 @@ const AssignmentForm = ({
                   placeholder="User Name"
                   {...register("userName")}
                   name="userName"
-                  className={`input input-bordered input-sm input-success w-full`}
+                  className={`dark:bg-[rgba(0,0,0,.4)] input input-bordered input-sm input-success w-full`}
                 />
               </div>
 
