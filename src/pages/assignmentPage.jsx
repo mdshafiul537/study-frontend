@@ -2,10 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import AssignmentCard from "../Components/Assignment/AssignmentCard";
 import { useLoaderData, useParams, useNavigate } from "react-router-dom";
 
-import axios from "axios";
-axios.defaults.withCredentials = true;
-axios.defaults.mode = "cors";
-
 import Loading from "../Components/Utils/Loading";
 import {
   getBoolean,
@@ -20,6 +16,11 @@ import EsModal from "../Components/Utils/EsModal";
 import SubmissionForm from "../Components/Submission/SubmissionForm";
 import { AuthContext } from "../Context/AuthProvider";
 import { REQUEST_HEADER } from "../utils/types";
+import { Helmet } from "react-helmet";
+import {
+  getAssignmentDeleteAction,
+  getAssignmentSubmission,
+} from "../utils/loaderAction";
 
 const AssignmentPage = ({ ...props }) => {
   const params = useParams();
@@ -45,15 +46,13 @@ const AssignmentPage = ({ ...props }) => {
   const onAssignmentSubmitAction = (values) => {
     setIsModalOpen(false);
     onNotify("Please, wait Assignment is Submitting");
-    axios
-      .post(`${import.meta.env.VITE_API_URL}/submissions`, values, {
-        headers: REQUEST_HEADER,
-      })
+
+    getAssignmentSubmission(values)
       .then((resp) => {
-        if (resp.data.status) {
-          onNotifySuccess(resp.data.message);
+        if (resp.status) {
+          onNotifySuccess(resp.message);
         } else {
-          onNotifyError(resp.data.message);
+          onNotifyError(resp.message);
         }
       })
       .catch((error) => {
@@ -64,10 +63,8 @@ const AssignmentPage = ({ ...props }) => {
   const onAssignmentDeleteAction = () => {
     setIsModalOpen(false);
     onNotify("Sending Assignment Delete request. Please wait ");
-    axios
-      .delete(`${import.meta.env.VITE_API_URL}/assignments/${_id}`, {
-        headers: REQUEST_HEADER,
-      })
+
+    getAssignmentDeleteAction(_id)
       .then((resp) => {
         if (resp.data.status) {
           if (resp.data.response.deletedCount === 1) {
@@ -121,6 +118,9 @@ const AssignmentPage = ({ ...props }) => {
   } = assignment;
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>U-Learn | Assignment</title>
+      </Helmet>
       <EsModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

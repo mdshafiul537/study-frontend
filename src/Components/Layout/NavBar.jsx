@@ -23,18 +23,21 @@ const NavBar = () => {
       <li className="text-white active:text-white font-semibold border-b border-transparent hover:bg-none hover:border-white">
         <NavLink to="/create-assignments">Create Assignment</NavLink>
       </li>
-      <li className="text-white active:text-white font-semibold border-b border-transparent hover:bg-none hover:border-white">
-        <NavLink to="/pending-assignments"> Pending Assignments</NavLink>
-      </li>
+
       {user && (
-        <li>
-          <NavLink
-            className="text-white active:text-white font-semibold border-b border-transparent hover:bg-none hover:border-white rounded-b-sm"
-            to="/users/submissions"
-          >
-            My-Submissions
-          </NavLink>
-        </li>
+        <>
+          <li className="text-white active:text-white font-semibold border-b border-transparent hover:bg-none hover:border-white">
+            <NavLink to="/pending-assignments"> Pending Assignments</NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="text-white active:text-white font-semibold border-b border-transparent hover:bg-none hover:border-white rounded-b-sm"
+              to="/users/submissions"
+            >
+              My-Submissions
+            </NavLink>
+          </li>
+        </>
       )}
       <li className="text-white active:text-white font-semibold border-b border-transparent hover:bg-none hover:border-white">
         <NavLink to="/contact-us">Contact Us</NavLink>

@@ -10,7 +10,7 @@ const Footer = () => {
             <i className="fa-solid fa-object-group"></i>
           </span>
           <p className="w-full sm:w-full xs:w-full">
-            <span className="py-2 text-lg font-bold">U-Learn Study.</span>
+            <span className="py-2 text-lg font-bold">U-Learn.</span>
             <br />
             We are one of the most reliable academic writing service providers
             in the world due to our commitment to offering the best quality work

@@ -12,14 +12,12 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import EsModal from "../Components/Utils/EsModal";
 import SubmissionForm from "../Components/Submission/SubmissionForm";
 
-import axios from "axios";
-axios.defaults.withCredentials = true;
-axios.defaults.mode = "cors";
-
 import { REQUEST_HEADER } from "../utils/types";
 import { AuthContext } from "../Context/AuthProvider";
 
 import EsIframe from "../Components/Utils/EsIframe";
+import { Helmet } from "react-helmet";
+import { getUpdateSubmission } from "../utils/loaderAction";
 
 const PendingSubmissionPage = () => {
   const submissionResp = useLoaderData();
@@ -47,8 +45,7 @@ const PendingSubmissionPage = () => {
   const onAssignmentSubmitAction = (values) => {
     setIsModalOpen(false);
     onNotify("Please, wait marks is Submitting");
-    axios
-      .put(`${import.meta.env.VITE_API_URL}/submissions`, values)
+    getUpdateSubmission(values)
       .then((resp) => {
         if (resp.data.status) {
           onNotifySuccess(resp.data.message);
@@ -88,6 +85,9 @@ const PendingSubmissionPage = () => {
   };
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>U-Learn |Pending Submissions</title>
+      </Helmet>
       <EsModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

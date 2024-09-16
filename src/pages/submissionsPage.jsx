@@ -3,6 +3,7 @@ import Submissions from "../Components/Submission/Submissions";
 import { isEmptyOrNull } from "../utils/helper";
 import Loading from "../Components/Utils/Loading";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const SubmissionsPage = () => {
   const submissionResp = useLoaderData();
@@ -25,6 +26,9 @@ const SubmissionsPage = () => {
 
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>U-Learn |All Submissions</title>
+      </Helmet>
       <div className="w-full grid grid-cols-1">
         <Submissions submissions={submissions} key="all-pending-submissions" />
       </div>

@@ -1,9 +1,11 @@
 import axios from "axios";
 
 import { isEmptyOrNull } from "./helper";
+import { REQUEST_HEADER } from "./types";
 
 axios.defaults.withCredentials = true;
 axios.defaults.mode = "cors";
+axios.defaults.headers = REQUEST_HEADER;
 
 export const getAssignments = async () => {
   try {
@@ -138,5 +140,76 @@ export const getSendContactMessage = async (message) => {
     return resp.data;
   } catch (error) {
     console.log("Message Send Error, ", error);
+  }
+};
+
+export const getAssignmentSubmission = async (values) => {
+  try {
+    const resp = await axios.post(
+      `${import.meta.env.VITE_API_URL}/submissions`,
+      values,
+      {
+        headers: REQUEST_HEADER,
+      }
+    );
+    return resp.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getAssignmentDeleteAction = async (id) => {
+  try {
+    const resp = await axios.delete(
+      `${import.meta.env.VITE_API_URL}/assignments/${id}`,
+      {
+        headers: REQUEST_HEADER,
+      }
+    );
+
+    return resp;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getCreateAssignmentAction = async (assignment) => {
+  try {
+    const resp = await axios.post(
+      `${import.meta.env.VITE_API_URL}/assignments`,
+      assignment,
+      {
+        headers: REQUEST_HEADER,
+      }
+    );
+    return resp;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getUpdateSubmission = async (uSubmission) => {
+  try {
+    const resp = await axios.put(
+      `${import.meta.env.VITE_API_URL}/submissions`,
+      uSubmission
+    );
+
+    return resp;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getAssignmentUpdateAction = async (uAssignment) => {
+  try {
+    const resp = await axios.put(
+      `${import.meta.env.VITE_API_URL}/assignments`,
+      uAssignment
+    );
+
+    return resp;
+  } catch (error) {
+    return error;
   }
 };

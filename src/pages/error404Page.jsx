@@ -9,7 +9,7 @@ const Error404Page = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>U-Learn Study | Not found</title>
+        <title>U-Learn | Not found</title>
       </Helmet>
       <Header />
       <section>

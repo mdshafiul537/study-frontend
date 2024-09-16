@@ -4,8 +4,6 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import axios from "axios";
-
 import { useLoaderData, useNavigate } from "react-router-dom";
 import {
   isEmptyOrNull,
@@ -16,10 +14,8 @@ import {
 import AssignmentForm from "../Components/Assignment/AssignmentForm";
 import Loading from "../Components/Utils/Loading";
 import { REQUEST_HEADER } from "../utils/types";
-import esFetchApi from "../utils/fetchApi";
-
-axios.defaults.withCredentials = true;
-axios.defaults.mode = "cors";
+import { Helmet } from "react-helmet";
+import { getAssignmentUpdateAction } from "../utils/loaderAction";
 
 const UpdateAssignmentsPage = ({ ...props }) => {
   const assignmentResp = useLoaderData();
@@ -36,9 +32,7 @@ const UpdateAssignmentsPage = ({ ...props }) => {
   }, [assignmentResp]);
   const onAssignmentUpdateAction = (values, reset) => {
     onNotify("Sending Update request. Please wait");
-
-    axios
-      .put(`${import.meta.env.VITE_API_URL}/assignments`, values)
+    getAssignmentUpdateAction(values)
       .then((resp) => {
         if (!isEmptyOrNull(resp.data)) {
           if (resp.data.status) {
@@ -69,9 +63,12 @@ const UpdateAssignmentsPage = ({ ...props }) => {
   if (isLoadingData) {
     return <Loading isLoading={isLoadingData} />;
   }
-  console.log("As", assignment);
+
   return (
     <React.Fragment>
+      <Helmet>
+        <title>U-Learn |Update Assignment</title>
+      </Helmet>
       <AssignmentForm
         onSubmitAction={onAssignmentUpdateAction}
         initValues={assignment}

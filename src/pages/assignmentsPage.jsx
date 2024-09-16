@@ -3,6 +3,7 @@ import AssignmentCard from "../Components/Assignment/AssignmentCard";
 import { useLoaderData } from "react-router-dom";
 import { isEmptyOrNull } from "../utils/helper";
 import { getAllAssignmentByDifficulty } from "../utils/loaderAction";
+import { Helmet } from "react-helmet";
 
 const AssignmentsPage = () => {
   const assignmentResp = useLoaderData();
@@ -42,6 +43,9 @@ const AssignmentsPage = () => {
 
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>U-Learn |All Assignment</title>
+      </Helmet>
       <div className="my-6 border-b  py-2 dark:text-teal-50 font-medium">
         Sort By Difficulty:
         <details ref={dropdownMenuElm} className="dropdown">

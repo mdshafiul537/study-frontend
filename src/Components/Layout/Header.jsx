@@ -42,7 +42,7 @@ const Header = () => {
             </div>
             <NavLink to={"/"} className=" text-white text-xl">
               <i className="fa-solid fa-object-group"></i>
-              &nbsp; U-Learn Study
+              &nbsp; U-Learn
             </NavLink>
           </div>
           <div className="navbar-center hidden lg:flex">

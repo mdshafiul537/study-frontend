@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { createContext, useEffect, useState } from "react";
-import axios from "axios";
+
 import {
   createUserWithEmailAndPassword,
   getAuth,

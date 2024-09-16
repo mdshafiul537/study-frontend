@@ -1,9 +1,13 @@
 import React from "react";
 import ContactForm from "../Components/Contact/ContactForm";
+import { Helmet } from "react-helmet";
 
 const ContactPage = () => {
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>U-Learn |Contact Us</title>
+      </Helmet>
       <div className="grid grid-cols-2 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 my-14 gap-6">
         <div className="flex flex-col justify-center gap-5">
           <h2 className="text-5xl my-2">Contact</h2>
@@ -26,7 +30,7 @@ const ContactPage = () => {
         <div className="flex flex-col items-center  xs:order-first sm:order-first md:order-none">
           <img
             src="https://i.ibb.co.com/fdSKqHZ/AI-Generated-Image-2024-09-16-464173877022201.jpg"
-            alt="U-Learn Study"
+            alt="U-Learn"
           />
         </div>
       </div>

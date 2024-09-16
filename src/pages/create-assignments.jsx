@@ -4,7 +4,6 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import axios from "axios";
 import {
   isEmptyOrNull,
   onNotify,
@@ -14,19 +13,15 @@ import {
 import AssignmentForm from "../Components/Assignment/AssignmentForm";
 import { AuthContext } from "../Context/AuthProvider";
 import { REQUEST_HEADER } from "../utils/types";
-
-axios.defaults.withCredentials = true;
-axios.defaults.mode = "cors";
+import { Helmet } from "react-helmet";
+import { getCreateAssignmentAction } from "../utils/loaderAction";
 
 const CreateAssignmentsPage = ({ ...props }) => {
   const { user } = useContext(AuthContext);
 
   const onCreateAssignmentAction = (values, reset) => {
     onNotify("Sending item add request. Please wait");
-    axios
-      .post(`${import.meta.env.VITE_API_URL}/assignments`, values, {
-        headers: REQUEST_HEADER,
-      })
+    getCreateAssignmentAction(values)
       .then((resp) => {
         if (!isEmptyOrNull(resp.data)) {
           if (resp.data.status) {
@@ -63,6 +58,9 @@ const CreateAssignmentsPage = ({ ...props }) => {
   };
   return (
     <React.Fragment>
+      <Helmet>
+        <title>U-Learn |Add Assignment</title>
+      </Helmet>
       <AssignmentForm
         initValues={initValues}
         onSubmitAction={onCreateAssignmentAction}
