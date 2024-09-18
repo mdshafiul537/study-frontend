@@ -15,7 +15,10 @@ import AssignmentForm from "../Components/Assignment/AssignmentForm";
 import Loading from "../Components/Utils/Loading";
 import { REQUEST_HEADER } from "../utils/types";
 import { Helmet } from "react-helmet";
-import { getAssignmentUpdateAction } from "../utils/loaderAction";
+import {
+  getAssignmentUpdateAction,
+  getAssignmentUpdateActionViaPost,
+} from "../utils/loaderAction";
 
 const UpdateAssignmentsPage = ({ ...props }) => {
   const assignmentResp = useLoaderData();
@@ -32,8 +35,11 @@ const UpdateAssignmentsPage = ({ ...props }) => {
   }, [assignmentResp]);
   const onAssignmentUpdateAction = (values, reset) => {
     onNotify("Sending Update request. Please wait");
+    // getAssignmentUpdateActionViaPost
     getAssignmentUpdateAction(values)
       .then((resp) => {
+        console.log("getAssignmentUpdateAction, resp ", resp);
+
         if (!isEmptyOrNull(resp.data)) {
           if (resp.data.status) {
             onNotifySuccess(resp.data.message);

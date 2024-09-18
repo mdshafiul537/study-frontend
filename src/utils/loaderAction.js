@@ -188,11 +188,16 @@ export const getCreateAssignmentAction = async (assignment) => {
   }
 };
 
+//All Request method work  except PUT (If any one solve this issue. please suggest me that working solution )
+
 export const getUpdateSubmission = async (uSubmission) => {
   try {
     const resp = await axios.put(
       `${import.meta.env.VITE_API_URL}/submissions`,
-      uSubmission
+      uSubmission,
+      {
+        headers: REQUEST_HEADER,
+      }
     );
 
     return resp;
@@ -201,11 +206,54 @@ export const getUpdateSubmission = async (uSubmission) => {
   }
 };
 
+
+
 export const getAssignmentUpdateAction = async (uAssignment) => {
   try {
     const resp = await axios.put(
       `${import.meta.env.VITE_API_URL}/assignments`,
-      uAssignment
+      uAssignment,
+      {
+        headers: REQUEST_HEADER,
+      }
+    );
+
+    return resp;
+  } catch (error) {
+    return error;
+  }
+};
+
+
+/**
+ *
+ * Note: After mony hour searching cors solution.Try all most each and every solution, not work any of them. Then Request Method change (PUT->POST)
+ */
+
+export const getUpdateSubmissionViaPost = async (uSubmission) => {
+  try {
+    const resp = await axios.post(
+      `${import.meta.env.VITE_API_URL}/submissions/update`,
+      uSubmission,
+      {
+        headers: REQUEST_HEADER,
+      }
+    );
+
+    return resp;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getAssignmentUpdateActionViaPost = async (uAssignment) => {
+  try {
+    const resp = await axios.post(
+      `${import.meta.env.VITE_API_URL}/assignments/update`,
+      uAssignment,
+      {
+        headers: REQUEST_HEADER,
+      }
     );
 
     return resp;

@@ -17,7 +17,10 @@ import { AuthContext } from "../Context/AuthProvider";
 
 import EsIframe from "../Components/Utils/EsIframe";
 import { Helmet } from "react-helmet";
-import { getUpdateSubmission } from "../utils/loaderAction";
+import {
+  getUpdateSubmission,
+  getUpdateSubmissionViaPost,
+} from "../utils/loaderAction";
 
 const PendingSubmissionPage = () => {
   const submissionResp = useLoaderData();
@@ -45,13 +48,17 @@ const PendingSubmissionPage = () => {
   const onAssignmentSubmitAction = (values) => {
     setIsModalOpen(false);
     onNotify("Please, wait marks is Submitting");
+    // getUpdateSubmissionViaPost
     getUpdateSubmission(values)
       .then((resp) => {
-        if (resp.data.status) {
-          onNotifySuccess(resp.data.message);
-          navigate(0);
-        } else {
-          onNotifyError(resp.data.message);
+        console.log("getUpdateSubmission Resp, ", resp);
+        if (!isEmptyOrNull(resp.data)) {
+          if (resp.data.status) {
+            onNotifySuccess(resp.data.message);
+            navigate(0);
+          } else {
+            onNotifyError(resp.data.message);
+          }
         }
       })
       .catch((error) => {
